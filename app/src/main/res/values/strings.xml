@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">IntiMex</string>
+    <!--SplashScreen.java - activity_splashscreen.xml-->
+    <string name="info_logo">Este es el logo de la aplicación Lyfecycle</string>
+
+    <!--MainActivity.java - activity_main.xml-->
+    <string name="label_btn_registrar_producto">Registrar Producto</string>
+    <string name="label_btn_buscador">Buscador</string>
+    <string name="label_btn_contactar">Contactar</string>
+    <string name="label_info_activity_main">
+        Un <b>Intent</b> es un objeto de acción que se usa para solicitar una acción de otro componente de
+        la aplicación. Dicho de otra manera, es una intención de hacer algo, como iniciar otra actividad,
+        un servicio o entregar un mensaje. Los  Intents también pueden guardar información primitiva de
+        utilidad entre la comunicación.
+    </string>
+    <string name="label_info2_activity_main">
+
+        Los Intents pueden ser <b>implícitos</b> o <b>explícitos</b>. Son explícitos cuando se ejecuta un componente en específico, es decir,
+        especifican qué componente se debe iniciar mediante su nombre (el nombre de clase completamente calificado).\n\n
+        Usualmente, el usuario usa el intent explícito para iniciar un componente en su propia aplicación porque conoce el nombre
+        de clase de la actividad o el servicio que desea iniciar. Por ejemplo, se puede utilizar para iniciar una actividad nueva
+        en respuesta a una acción del usuario.\n\n
+        Como ejemplo de un intent Explicito estan los botones anteriores que su funcióon es iniciar una nueva actividad.\n\n
+    </string>
+</resources>
