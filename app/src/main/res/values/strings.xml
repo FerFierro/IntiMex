@@ -1,4 +1,5 @@
 <resources>
+    <!--AndroidManifest.xml-->
     <string name="app_name">IntiMex</string>
     <!--SplashScreen.java - activity_splashscreen.xml-->
     <string name="info_logo">Este es el logo de la aplicación Lyfecycle</string>
@@ -20,6 +21,30 @@
         Usualmente, el usuario usa el intent explícito para iniciar un componente en su propia aplicación porque conoce el nombre
         de clase de la actividad o el servicio que desea iniciar. Por ejemplo, se puede utilizar para iniciar una actividad nueva
         en respuesta a una acción del usuario.\n\n
-        Como ejemplo de un intent Explicito estan los botones anteriores que su funcióon es iniciar una nueva actividad.\n\n
+        Como ejemplo de un intent Explicito estan los botones anteriores que su función es iniciar una nueva actividad.\n\n
+    </string>
+
+    <!--Buscador.java - activity_buscador.xml-->
+    <string name="label_url">Introduce la url donde deseas navegar en la web</string>
+    <string name="label_buscar_palabra">Qué palabra buscaras?</string>
+    <string name="label_btn_buscar">Buscar</string>
+    <string name="hint_url">https://www.develop.com.mx</string>
+    <string name="hint_palabra">Buscar Develop talent &amp; technology</string>
+    <string name="label_info_actividad_buscador">
+        En esta sección se muestran dos ejemplos del uso del intent implicito.\n\n
+        <b>Pero que es un intent implicito?</b>\n\n
+
+        Son implícitos cuando se entrega una referencia genérica sobre alguna condición, y aquellas entidades que cumplan ese
+        requisito serán presentadas como candidatas para la tarea.A continuación se explicara a mas detalle cada una respectivamente.\n\n
+        Es decir,no se nombra el componente específicamente; pero, en cambio, se declara una acción general para realizar, lo que permite
+        que un componente de otra aplicación la maneje.\n\n
+
+        <i>Por ejemplo, si se desea mostrar al usuario una ubicación en un mapa, puede usar un
+        intent implícito para solicitar que otra aplicación capaz, muestre una ubicación específica en un mapa.\n\n</i>
+
+        Cuando se crea un intent implícito, el sistema Android busca el componente apropiado para iniciar comparando el contenido de la intent
+        con los filtros de intents declarados en el archivo de manifiesto de otras aplicaciones en el dispositivo. Si la intent coincide con un
+        filtro de intents, el sistema inicia ese componente y le entrega el objeto Intent. Si varios filtros de intents son compatibles,
+        el sistema muestra un cuadro de diálogo para que el usuario pueda elegir la aplicación que se debe usar.\n\n
     </string>
 </resources>

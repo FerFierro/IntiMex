@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mx.com.develop.intimex">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashScreen.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -17,12 +19,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activitys.MainActivity"
             android:label="@string/app_name" />
-        <activity android:name=".Activitys.RegistrarProducto" />
-        <activity android:name=".Activitys.Buscador" />
-        <activity android:name=".Activitys.Contactar"></activity>
+
+        <activity
+            android:label="Registrar Producto"
+            android:name=".Activitys.RegistrarProducto"
+            android:parentActivityName=".Activitys.MainActivity"/>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activitys.MainActivity" />
+
+        <activity
+            android:label="Buscador"
+            android:name=".Activitys.Buscador"
+            android:parentActivityName=".Activitys.MainActivity">
+        </activity>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activitys.MainActivity" />
+
+        <activity
+            android:label="Contactar"
+            android:name=".Activitys.Contactar"
+            android:parentActivityName=".Activitys.MainActivity"/>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activitys.MainActivity" />
+
     </application>
 
 </manifest>
