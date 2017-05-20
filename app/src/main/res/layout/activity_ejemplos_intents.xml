@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:scrollbars="none"
+    tools:context="mx.com.develop.intimex.Activitys.EjemplosIntents">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_ejemplos_intents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_label_info_compartir_datos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_compartir_datos"
+            android:textColor="@color/primary_text" />
+
+        <EditText
+            android:id="@+id/et_compartir_datos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="@string/hint_datos_compartir" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btn_obtener_datos"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_weight=".5"
+                android:text="@string/label_btn_obtener_datos" />
+
+            <Button
+                android:id="@+id/btn_compartir_datos"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_weight=".5"
+                android:text="@string/label_btn_compartir_datos" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_label_info_mostrar_contactos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_mostrar_contactos"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/btn_mostrar_contactos"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_mostrar_contactos" />
+
+        <TextView
+            android:id="@+id/tv_label_info_mostrar_geo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_mostrar_geolocalizacion"
+            android:textColor="@color/primary_text" />
+
+        <Spinner
+            android:id="@+id/spinner_latitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            style="@style/SpinnerItemStyle"
+            android:entries="@array/latitud" />
+
+        <Spinner
+            android:id="@+id/spinner_longitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:layout_marginTop="@dimen/separador"
+            android:entries="@array/longitud"
+            android:prompt="@string/class_prompt" />
+
+        <TextView
+            android:id="@+id/tv_label_info_zoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_zoom"
+            android:textColor="@color/primary_text" />
+
+        <SeekBar
+            android:id="@+id/seekbar_zoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="1"
+            android:max="21"/>
+
+        <TextView
+            android:id="@+id/tv_label_seekbar"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text" />
+
+        <Spinner
+            android:id="@+id/spinner_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:layout_marginTop="@dimen/separador"
+            android:entries="@array/categoria"
+            android:prompt="@string/class_prompt" />
+
+        <Button
+            android:id="@+id/btn_mostrar_geo"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_mostrar_geolocalizacion" />
+    </LinearLayout>
+</ScrollView>

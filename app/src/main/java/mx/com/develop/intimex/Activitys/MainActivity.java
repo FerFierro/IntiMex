@@ -12,7 +12,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button  btn_registrar_producto,
             btn_buscador,
-            btn_contactar;
+            btn_contactar,
+            btn_ejemplos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_registrar_producto=(Button) findViewById(R.id.btn_registrar_producto);
         btn_buscador=(Button) findViewById(R.id.btn_buscador);
         btn_contactar=(Button) findViewById(R.id.btn_contactar);
+        btn_ejemplos=(Button) findViewById(R.id.btn_ejemplos);
     }
 
     private void inicializarSetOnClickListener() {
         btn_registrar_producto.setOnClickListener(this);
         btn_buscador.setOnClickListener(this);
         btn_contactar.setOnClickListener(this);
+        btn_ejemplos.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btn_contactar:
                 i=new Intent(this,Contactar.class);
+                startActivity(i);
+                break;
+
+            case R.id.btn_ejemplos:
+                i=new Intent(this,EjemplosIntents.class);
                 startActivity(i);
                 break;
         }

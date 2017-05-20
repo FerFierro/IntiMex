@@ -48,6 +48,14 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/label_btn_contactar" />
 
+        <Button
+            android:id="@+id/btn_ejemplos"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/label_btn_ejemplos" />
+
         <TextView
             android:id="@+id/tv_label_info2_activity_main"
             android:layout_width="match_parent"
@@ -55,7 +63,6 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:text="@string/label_info2_activity_main"
             android:textColor="@color/primary_text" />
-
 
     </LinearLayout>
 </ScrollView>

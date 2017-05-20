@@ -2,14 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mx.com.develop.intimex">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".SplashScreen.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -19,39 +21,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activitys.MainActivity"
             android:label="@string/app_name" />
-
         <activity
-            android:label="Registrar Producto"
             android:name=".Activitys.RegistrarProducto"
-            android:parentActivityName=".Activitys.MainActivity"/>
-
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Activitys.MainActivity" />
-
-        <activity
-            android:label="Buscador"
-            android:name=".Activitys.Buscador"
+            android:label="Registrar Producto"
             android:parentActivityName=".Activitys.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activitys.Buscador"
+            android:label="Buscador"
+            android:parentActivityName=".Activitys.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
         </activity>
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Activitys.MainActivity" />
+        <activity
+            android:name=".Activitys.Contactar"
+            android:label="Contactar"
+            android:parentActivityName=".Activitys.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
+        </activity>
 
         <activity
-            android:label="Contactar"
-            android:name=".Activitys.Contactar"
-            android:parentActivityName=".Activitys.MainActivity"/>
+            android:label="Ejemplos de Intents"
+            android:name=".Activitys.EjemplosIntents"
+            android:parentActivityName=".Activitys.MainActivity">
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Activitys.MainActivity" />
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activitys.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
