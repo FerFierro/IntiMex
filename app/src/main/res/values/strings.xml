@@ -60,16 +60,29 @@
     <string name="label_btn_enviar_email">Enviar correo</string>
     <string name="hint_asunto">Asunto</string>
     <string name="hint_mensaje">Mensaje ...</string>
-    <string name="label_info_compartir_datos">Compartir datos del telefono:</string>
+
+
+    <!--elemplosIntents.java - activity_ejemplos_intents.xml-->
+    <string name="label_info_compartir_datos"><b>Ejemplo 1</b>\nCompartir datos del telefono:</string>
+    <string name="hint_datos_compartir">Obten tus datos para compartir</string>
     <string name="label_btn_compartir_datos">Compartir</string>
     <string name="label_btn_obtener_datos">Obtener</string>
-    <string name="hint_datos_compartir">Obten tus datos para compartir</string>
-    <!--elemplosIntents.java - activity_ejemplos_intents.xml-->
-    <string name="label_info_mostrar_contactos">Mostrar contactos almacenados en el smarphone:</string>
+    <string name="label_info_mostrar_contactos"><b>Ejemplo 2</b>\nMostrar contactos almacenados en el smarphone:</string>
     <string name="label_btn_mostrar_contactos">Mostrar contactos</string>
-    <string name="label_info_mostrar_geolocalizacion">Este es un ejemplo donde se abre la aplicación de Google Maps para una localización determinada, solo falta que introduzcas los siguientes campos:</string>
+    <string name="label_info_mostrar_geolocalizacion"><b>Ejemplo 3</b>\nEste es un ejemplo donde se abre la aplicación de Google Maps para una localización determinada, solo falta que introduzcas los siguientes campos:</string>
     <string name="label_btn_mostrar_geolocalizacion">Mostrar Geolocalización</string>
     <string name="label_info_zoom">Selecciona el zoom para el mapa:</string>
+    <string name="label_info_interfaz_llamada">
+        <b>Ejemplo 4</b>\nEn este ejemplo se crea un nuevo intent con la acción <b>ACTION_VIEW</b>
+        y como datos  se pasara el <i>tel:53952791</i> esto colocará la aplicación en el escenario de llamada
+        telefonica para confirmar la llamada al número representado:</string>
+    <string name="label_btn_interfaz_llamada">Confirmar llamada</string>
+    <string name="label_info_crear_alarma"><b>Ejemplo 5</b>\nCrear una alarma dada una hora especificada:</string>
+    <string name="label_btn_crear_alarma">Crear Alarma</string>
+    <string name="label_checkbox_vibrar">Vibrar</string>
+    <string name="hint_etiqueta">Escribe una Etiqueta</string>
+    <string name="label_info_crear_temporizador"><b>Ejemplo 6</b>\nSe creara un temporizador de cuenta regresiva, usa la acción <b>ACTION_SET_TIMER</b>:</string>
+    <string name="label_btn_crear_temporizador">Crear Temporizador</string>
 
     <string-array name="latitud">
         <item>Selecciona la Latitud</item>
@@ -82,6 +95,8 @@
     </string-array>
 
     <string name="class_prompt">Selecciona</string>
+    <string name="hint_segundos">00</string>
+
 
     <string-array name="longitud">
         <item>Selecciona la Longitud</item>

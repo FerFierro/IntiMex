@@ -129,7 +129,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"
-            android:layout_marginTop="@dimen/separador"
             android:entries="@array/categoria"
             android:prompt="@string/class_prompt" />
 
@@ -142,5 +141,112 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_weight=".5"
             android:text="@string/label_btn_mostrar_geolocalizacion" />
+
+        <TextView
+            android:id="@+id/tv_label_info_interfaz_llamada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_interfaz_llamada"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/btn_interfaz_llamada"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_interfaz_llamada" />
+
+        <TextView
+            android:id="@+id/tv_label_info_crear_alarma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_crear_alarma"
+            android:textColor="@color/primary_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TimePicker
+                android:id="@+id/timepiker_alarma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:timePickerMode="clock"
+                tools:ignore="UnusedAttribute"></TimePicker>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <CheckBox android:id="@+id/checkbox_vibrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".7"
+                    android:text="@string/label_checkbox_vibrar"/>
+                <EditText
+                    android:id="@+id/et_etiqueta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight=".3"
+                    android:hint="@string/hint_etiqueta"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_crear_alarma"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_crear_alarma" />
+
+        <TextView
+            android:id="@+id/tv_label_info_crear_temporizador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_crear_temporizador"
+            android:textColor="@color/primary_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <EditText android:id="@+id/et_segundos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:inputType="number"
+                android:maxLength="2"
+                android:hint="@string/hint_segundos"/>
+            <EditText
+                android:id="@+id/et_etiqueta_segundos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight=".2"
+                android:hint="@string/hint_etiqueta"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_crear_temporizador"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_crear_temporizador" />
     </LinearLayout>
 </ScrollView>
