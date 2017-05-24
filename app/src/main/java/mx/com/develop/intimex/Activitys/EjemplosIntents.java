@@ -7,14 +7,17 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.AlarmClock;
+import android.provider.CalendarContract;
 import android.provider.ContactsContract;
-import android.support.annotation.RequiresApi;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -35,18 +38,25 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
             btn_mostrar_contactos,
             btn_interfaz_llamada,
             btn_crear_alarma,
-            btn_crear_temporizador;
-    EditText et_compartir_datos,
-            et_etiqueta,
+            btn_crear_temporizador,
+            btn_mostrar_alarmas,
+            btn_agregar_evento,
+            btn_imagen_detenida,
+            btn_modo_video,
+            btn_abrir_configuracion,
+            btn_insertar_contacto;
+    EditText et_etiqueta,
             et_segundos,
             et_etiqueta_segundos;
     Spinner spinner_latitud,
             spinner_longitud,
-            spinner_categoria;
+            spinner_categoria,
+            spinner_configuracion;
     SeekBar seekbar_zoom;
-    TextView tv_label_seekbar;
+    TextView tv_label_seekbar,tv_compartir_datos;
     TimePicker timepiker_alarma;
     CheckBox checkbox_vibrar;
+    CalendarView calendar_end,calendar_begin;
     int progressChangedValue = 0;
 
     @Override
@@ -77,16 +87,25 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         btn_interfaz_llamada = (Button) findViewById(R.id.btn_interfaz_llamada);
         btn_crear_alarma = (Button) findViewById(R.id.btn_crear_alarma);
         btn_crear_temporizador = (Button) findViewById(R.id.btn_crear_temporizador);
+        btn_mostrar_alarmas = (Button) findViewById(R.id.btn_mostrar_alarmas);
+        btn_agregar_evento = (Button) findViewById(R.id.btn_agregar_evento);
+        btn_imagen_detenida = (Button) findViewById(R.id.btn_imagen_detenida);
+        btn_modo_video = (Button) findViewById(R.id.btn_modo_video);
+        btn_abrir_configuracion = (Button) findViewById(R.id.btn_abrir_configuracion);
+        btn_insertar_contacto = (Button) findViewById(R.id.btn_insertar_contacto);
+
         // Spinner
         spinner_latitud = (Spinner) findViewById(R.id.spinner_latitud);
         spinner_longitud = (Spinner) findViewById(R.id.spinner_longitud);
         spinner_categoria = (Spinner) findViewById(R.id.spinner_categoria);
+        spinner_configuracion = (Spinner) findViewById(R.id.spinner_configuracion);
+
         //seekBars
         seekbar_zoom = (SeekBar) findViewById(R.id.seekbar_zoom);
         //TextViews
         tv_label_seekbar = (TextView) findViewById(R.id.tv_label_seekbar);
+        tv_compartir_datos = (TextView) findViewById(R.id.et_compartir_datos);
         //Editexts
-        et_compartir_datos = (EditText) findViewById(R.id.et_compartir_datos);
         et_etiqueta = (EditText) findViewById(R.id.et_etiqueta);
         et_segundos = (EditText) findViewById(R.id.et_segundos);
         et_etiqueta_segundos = (EditText) findViewById(R.id.et_etiqueta_segundos);
@@ -94,6 +113,10 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         timepiker_alarma = (TimePicker) findViewById(R.id.timepiker_alarma);
         //CheckBox
         checkbox_vibrar = (CheckBox) findViewById(R.id.checkbox_vibrar);
+        //CalendarView
+        calendar_begin = (CalendarView) findViewById(R.id.calendar_begin);
+        calendar_end = (CalendarView) findViewById(R.id.calendar_end);
+
 
     }
 
@@ -105,6 +128,12 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         btn_interfaz_llamada.setOnClickListener(this);
         btn_crear_alarma.setOnClickListener(this);
         btn_crear_temporizador.setOnClickListener(this);
+        btn_mostrar_alarmas.setOnClickListener(this);
+        btn_agregar_evento.setOnClickListener(this);
+        btn_imagen_detenida.setOnClickListener(this);
+        btn_modo_video.setOnClickListener(this);
+        btn_abrir_configuracion.setOnClickListener(this);
+        btn_insertar_contacto.setOnClickListener(this);
 
     }
 
@@ -113,40 +142,275 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         spinner_latitud.setOnItemSelectedListener(this);
         spinner_longitud.setOnItemSelectedListener(this);
         spinner_categoria.setOnItemSelectedListener(this);
+        spinner_configuracion.setOnItemSelectedListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent i = null;
+        Intent i;
         switch (v.getId()) {
 
             case R.id.btn_obtener_datos:
-                et_compartir_datos.setText(getObtenerDatos());
+                tv_compartir_datos.setText(getObtenerDatos());
                 break;
 
             case R.id.btn_compartir_datos:
+                i = new Intent();
                 compartirDatos(i);
                 break;
 
             case R.id.btn_mostrar_contactos:
+                i = new Intent();
                 mostrarContactos(i);
                 break;
 
             case R.id.btn_mostrar_geo:
+                i = new Intent();
                 mostrarGeolocalizacion(i);
                 break;
 
             case R.id.btn_interfaz_llamada:
+                i = new Intent();
                 confirmarLlamada(i);
                 break;
 
             case R.id.btn_crear_alarma:
+                i = new Intent();
                 crearAlarma(i);
                 break;
 
             case R.id.btn_crear_temporizador:
+                i = new Intent();
                 crearTemporizador(i);
                 break;
+
+            case R.id.btn_mostrar_alarmas:
+                i = new Intent();
+                mostrarAlarmas(i);
+                break;
+
+            case R.id.btn_agregar_evento:
+                i = new Intent();
+                agregarEventoCalendario(i);
+                break;
+
+            case R.id.btn_imagen_detenida:
+                i = new Intent();
+                mostrarImagenDetenida(i);
+                break;
+
+            case R.id.btn_modo_video:
+                i = new Intent();
+                mostrarModoVideo(i);
+                break;
+
+            case R.id.btn_abrir_configuracion:
+                i = new Intent();
+                abrirConfiguracion(i);
+                break;
+            case R.id.btn_insertar_contacto:
+                i = new Intent();
+                insertarContacto(i);
+                break;
+        }
+    }
+
+    private void insertarContacto(Intent i) {
+        i.setAction(Intent.ACTION_INSERT);
+        i.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        i.putExtra(ContactsContract.Intents.Insert.NAME, "Jose Angel Fierro");
+        i.putExtra(ContactsContract.Intents.Insert.PHONE, "5518845418");
+        i.putExtra(ContactsContract.Intents.Insert.POSTAL, "56619");
+        i.putExtra(ContactsContract.Intents.Insert.COMPANY, "Develop Talent & Technology");
+        i.putExtra(ContactsContract.Intents.Insert.JOB_TITLE, "Instructor for Android");
+        i.putExtra(ContactsContract.Intents.Insert.EMAIL,"ing_angelfierro@hotmail.com");
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
+        }
+    }
+
+    private void abrirConfiguracion(Intent i) {
+        String configuracion = spinner_configuracion.getSelectedItem().toString();
+        if (configuracion.equals("Selecciona la configuración")){
+            Toast.makeText(this, "Selecciona la configuraion para abrir", Toast.LENGTH_SHORT).show();
+        }else{
+            String accion;
+            switch (configuracion){
+                case"ACTION_ACCESSIBILITY_SETTINGS":
+                    //Accesibilidad
+                    accion=Settings.ACTION_ACCESSIBILITY_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_AIRPLANE_MODE_SETTINGS":
+                    //Redes inalámbricas y redes
+                    accion=Settings.ACTION_AIRPLANE_MODE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_APN_SETTINGS":
+                    //APN
+                    accion=Settings.ACTION_APN_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_APPLICATION_DEVELOPMENT_SETTINGS":
+                    //Opciones del desarrollador
+                    accion=Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_BLUETOOTH_SETTINGS":
+                    //Bluetooth
+                    accion=Settings.ACTION_BLUETOOTH_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_APPLICATION_SETTINGS":
+                    //Aplicaciones
+                    accion=Settings.ACTION_APPLICATION_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_LOCALE_SETTINGS":
+                    //Idioma
+                    accion=Settings.ACTION_LOCALE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_INPUT_METHOD_SETTINGS":
+                    //Teclado e Idionma
+                    accion=Settings.ACTION_INPUT_METHOD_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_DISPLAY_SETTINGS":
+                    //Pantalla
+                    accion=Settings.ACTION_DISPLAY_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_SECURITY_SETTINGS":
+                    //Seguridad
+                    accion=Settings.ACTION_SECURITY_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_LOCATION_SOURCE_SETTINGS":
+                    //Acceso a la ubicación
+                    accion=Settings.ACTION_LOCATION_SOURCE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_INTERNAL_STORAGE_SETTINGS":
+                    //Configuración de almacenamiento
+                    accion=Settings.ACTION_INTERNAL_STORAGE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case"ACTION_MEMORY_CARD_SETTINGS":
+                    //Configuración de almacenamiento
+                    accion=Settings.ACTION_MEMORY_CARD_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+
+                case "ACTION_DATA_ROAMING_SETTINGS":
+                    //Configuración de red móvil
+                    accion=Settings.ACTION_DATA_ROAMING_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_DATE_SETTINGS":
+                    //Configuración de fecha y hora
+                    accion=Settings.ACTION_DATE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_DEVICE_INFO_SETTINGS":
+                    //Estado del dispositivo
+                    accion=Settings.ACTION_DEVICE_INFO_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_INPUT_METHOD_SUBTYPE_SETTINGS":
+                    //Teclado de android (AOSP)
+                    accion=Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_MANAGE_APPLICATIONS_SETTINGS":
+                    //Aplicaciones>Descargado
+                    accion=Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS":
+                    //Aplicaciones>Todos
+                    accion=Settings.ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_NETWORK_OPERATOR_SETTINGS":
+                    //Redes disponibles
+                    accion=Settings.ACTION_NETWORK_OPERATOR_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_PRIVACY_SETTINGS":
+                    //Copia de seguridad y restablecer
+                    accion=Settings.ACTION_PRIVACY_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_WIFI_SETTINGS":
+                    //Wi-Fi
+                    accion=Settings.ACTION_WIFI_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_WIFI_IP_SETTINGS":
+                    //Configuración de IP
+                    accion=Settings.ACTION_WIFI_IP_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+                case "ACTION_USER_DICTIONARY_SETTINGS":
+                    //Diccionario del usuario
+                    accion=Settings.ACTION_USER_DICTIONARY_SETTINGS;
+                    iniciarAccionConfig(accion,i);
+                    break;
+            }
+
+        }
+
+    }
+
+    private void iniciarAccionConfig(String accion,Intent i) {
+        i.setAction(accion);
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
+        }
+    }
+
+
+
+    private void mostrarModoVideo(Intent i) {
+        i.setAction(MediaStore.INTENT_ACTION_VIDEO_CAMERA);
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
+        }
+    }
+
+    private void mostrarImagenDetenida(Intent i) {
+        i.setAction(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
+        }
+    }
+
+    private void agregarEventoCalendario(Intent i) {
+        Long begin=calendar_begin.getDate();
+        Long end=calendar_end.getDate();
+        i.setAction(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, begin)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,end)
+                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                .putExtra(CalendarContract.Events.TITLE, "Curso de Android")
+                .putExtra(CalendarContract.Events.DESCRIPTION, "Asistir a la capacitación de Android Certified")
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, "Aulas de Develop")
+                .putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
+        }
+        //solo si se desea mostrar la UI de agregar un evento
+       /* Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType("vnd.android.cursor.dir/event");
+        startActivity(intent);*/
+    }
+
+    private void mostrarAlarmas(Intent i) {
+        i.setAction(AlarmClock.ACTION_SHOW_ALARMS);
+        if (i.resolveActivity(getPackageManager()) != null) {
+            startActivity(i);
         }
     }
 
@@ -154,11 +418,10 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         String seconds=et_segundos.getText().toString().trim();
         String message=et_etiqueta_segundos.getText().toString().trim();
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            if (validaCamposTemporizador(et_segundos,et_etiqueta_segundos,seconds,message)==true){
-                i = new Intent(AlarmClock.ACTION_SET_TIMER)
+            if (validaCamposTemporizador(et_segundos,et_etiqueta_segundos,seconds,message)){
+                        i.setAction(AlarmClock.ACTION_SET_TIMER)
                         .putExtra(AlarmClock.EXTRA_MESSAGE, message)
-                        .putExtra(AlarmClock.EXTRA_LENGTH, seconds)
-                        .putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+                        .putExtra(AlarmClock.EXTRA_LENGTH, seconds);
                 if (i.resolveActivity(getPackageManager()) != null) {
                     startActivity(i);
                 }
@@ -176,8 +439,8 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
                 <uses-permission android:name="com.android.alarm.permission.SET_ALARM" /> */
 
         String message = et_etiqueta.getText().toString().trim();
-        int hour = 0;
-        int minutes = 0;
+        int hour;
+        int minutes;
         Boolean vibrar=checkbox_vibrar.isChecked();
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -188,7 +451,7 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
             minutes = timepiker_alarma.getCurrentMinute();
         }
         if (!esVacio(message)){
-            i = new Intent(AlarmClock.ACTION_SET_ALARM)
+            i.setAction(AlarmClock.ACTION_SET_ALARM)
                     .putExtra(AlarmClock.EXTRA_MESSAGE, message)
                     .putExtra(AlarmClock.EXTRA_HOUR, hour)
                     .putExtra(AlarmClock.EXTRA_MINUTES, minutes)
@@ -210,7 +473,7 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
 
     private void mostrarContactos(Intent i) {
         //Primera forma larga
-        i = new Intent();
+
         i.setAction(android.content.Intent.ACTION_VIEW);
         i.setData(ContactsContract.Contacts.CONTENT_URI);
         verificarActividadApropiada(i, "Abrir con:");
@@ -220,20 +483,19 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         //startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("content://contacts/people/")));
     }
 
-
     private boolean validaCampos(String latitud, String longitud, String categoria) {
 
-        if (latitud.equals("Selecciona la Latitud") == true) {
+        if (latitud.equals("Selecciona la Latitud")) {
             Toast.makeText(this, "Selecciona la latitud", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (longitud.equals("Selecciona la Longitud") == true) {
+        if (longitud.equals("Selecciona la Longitud")) {
             Toast.makeText(this, "Selecciona la Longitud", Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (categoria.equals("Selecciona la categoria") == true) {
+        if (categoria.equals("Selecciona la categoria")) {
             Toast.makeText(this, "Selecciona la categoria", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -242,12 +504,12 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
 
     private boolean validaCamposTemporizador(EditText et1,EditText et2, String seconds,String message) {
 
-        if (esVacio(seconds) == true) {
+        if (esVacio(seconds)) {
             et1.setError("Campo Vacio");
             return false;
         }
 
-        if (esVacio(message) == true) {
+        if (esVacio(message)) {
             et2.setError("Campo Vacio");
             return false;
         }
@@ -257,11 +519,11 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
 
     private void compartirDatos(Intent i) {
 
-        String numeroTelefonico = et_compartir_datos.getText().toString().trim();
+        String numeroTelefonico = tv_compartir_datos.getText().toString().trim();
         if (!(esVacio(numeroTelefonico))) {
             // Compartir  a través de las redes sociales disponibles en el móvil.
             String textoParaPonerEnLaRedSocial = "Mi datos del móvil";
-            i = new Intent(Intent.ACTION_SEND);
+            i.setAction(Intent.ACTION_SEND);
             i.setType("text/plain");
             i.putExtra(Intent.EXTRA_SUBJECT, textoParaPonerEnLaRedSocial);
             i.putExtra(Intent.EXTRA_TEXT, numeroTelefonico);
@@ -330,14 +592,14 @@ public class EjemplosIntents extends AppCompatActivity implements View.OnClickLi
         if (validaCampos(latitud, longitud, categoria)) {
             String url = String.format("geo: %s,%s ?z=%s&q=%s", latitud, longitud, zoom, categoria);
             Uri intentUri = Uri.parse(url);
-            i = new Intent(Intent.ACTION_VIEW, intentUri);
+            i.setAction(Intent.ACTION_VIEW );
+            i.setData(intentUri);
             i.setPackage("com.google.android.apps.maps");
 
             if (i.resolveActivity(getPackageManager()) != null) {
                 startActivity(i);
             }
 
-        } else {
         }
     }
 

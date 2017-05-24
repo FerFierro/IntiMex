@@ -83,6 +83,54 @@
     <string name="hint_etiqueta">Escribe una Etiqueta</string>
     <string name="label_info_crear_temporizador"><b>Ejemplo 6</b>\nSe creara un temporizador de cuenta regresiva, usa la acción <b>ACTION_SET_TIMER</b>:</string>
     <string name="label_btn_crear_temporizador">Crear Temporizador</string>
+    <string name="label_info_mostrar_alarmas"><b>Ejemplo 7</b>\nEn este ejemplo lo que se pretende es mostrar una lista de alarmas, usando la acción <b>ACTION_SHOW_ALARMS</b>.\n\n
+        Aunque no muchas aplicaciones invocan este intent <i>(la usan principalmente las aplicaciones del sistema)</i>, cualquier aplicación que se comporte
+        como alarma debe implementar este filtro de intents y responder mostrando la lista de alarmas actuales.</string>
+    <string name="label_btn_mostrar_alarmas">Mostrar Alarmas</string>
+    <string name="label_info_agregar_evento"><b>Ejemplo 8</b>\nEn este ejemplo lo que se pretende es agregar un evento del calendario.\n\n
+        Para agregar un evento nuevo al calendario del usuario, usa la acción <b>ACTION_INSERT</b> y especifica el URI de datos con <i>Events.CONTENT_URI</i>.\n\n
+        Después se puede especificar diversos detalles del evento con los extras.\n</string>
+    <string name="label_btn_agregar_evento">Agregar Evento</string>
+    <string name="label_fecha_termino">Selecciona la fecha de termino</string>
+    <string name="label_fecha_inicio">Selecciona la fecha de inicio</string>
+    <string name="info_agregar_evento">
+        Como ya sabes Android permite invocar actividades de otra aplicación con una intención.
+        En este ejemplo, se uso la intención apropiada para invocar la aplicación de calendario predeterminada y enviar datos previamente de los detalles del evento.\n\n
+        Pero para que funcione, el usuario debe confirmar para agregar el evento, o puede cambiar, editar cualquiera de los detalles asociados con un evento en particular.
+        Pero si solo se quiere invocar la aplicación solo necesitara el siguiente fragmento de código:\n\n
+        <b><i>Intent i = new Intent(Intent.ACTION_INSERT);\n
+        i.setType(\"vnd.android.cursor.dir/event\");\n
+        startActivity(i);</i></b>\n\n
+        El fragmento anterior invocará la aplicación de calendario con campos vacíos y permitirá al usuario introducir los detalles del evento antes de añadirlos.
+        Sin embargo, puede completar previamente los detalles del evento pasando los detalles en forma de extras de intención. Los valores Extras describen los detalles del evento,
+        como la hora de inicio del evento, la hora de finalización del evento, el título del evento, la descripción del evento, etc.\n\n
+
+        Las siguientes dos clases son importantes para entender y poder agregar los eventos:\n\n
+        <b>CalendarContract</b>:<i> Define el modelo de datos de la información relacionada con el calendario y el evento. Estos datos se almacenan en una serie de tablas, que se enumeran.</i>\n\n
+        <b>CalendarContract.Events</b>:<i> Esta tabla contiene la información específica del evento. Cada fila de esta tabla tiene la información de un solo evento, por ejemplo, título del evento, ubicación,
+        hora de inicio, hora de finalización, etc. El evento puede ocurrir una sola vez o puede repetirse varias veces.\n\n
+        Los asistentes, los recordatorios y las propiedades extendidas se almacenan en tablas separadas. Cada uno de ellos tiene un <b>EVENT_ID</b>  que hace referencia al <b>_ID</b> en la tabla de eventos.</i>
+    </string>
+
+    <string name="label_info_imagen_detenida">
+        <b>Ejemplo 9</b>\nEn este ejemplo lo que se pretende es abrir una aplicación de cámara en el modo de imagen detenida, para ello se usa la acción <b>INTENT_ACTION_STILL_IMAGE_CAMERA</b>
+    </string>
+    <string name="label_btn_imagen_detenida">Iniciar modo de imagen detenida</string>
+    <string name="label_info_modo_video">
+        <b>Ejemplo 10</b>\nEn este ejemplo lo que se pretende es abrir una app de cámara en el modo de video, para ello se usa la acción <b>INTENT_ACTION_VIDEO_CAMERA</b>
+    </string>
+    <string name="label_btn_modo_video">Iniciar cámara en modo de video</string>
+    <string name="label_info_abrir_configuracion">
+        <b>Ejemplo 11</b>\nEn este ejemplo lo que se pretende es abrir una pantalla en la configuración del sistema cuando la aplicación requiere que el usuario cambie algo,
+        selecciona una de las siguientes acciones de intent para abrir la pantalla de configuración correspondiente al nombre de la acción.
+    </string>
+    <string name="label_btn_abrir_configuracion">Abrir una sección específica de Settings</string>
+    <string name="label_info_insertar_contacto">
+        <b>Ejemplo 12</b>\nEn este ejemplo lo que se pretende es insertar un contacto nuevo, lo cual se usa la acción <b>ACTION_INSERT</b> ,
+        especifica <i>Contacts.CONTENT_TYPE</i> como el tipo de MIME e incluye cualquier información de contacto conocida en los campos extra especificados
+        por las constantes en <i>ContactsContract.Intents.Insert</i> .
+    </string>
+    <string name="label_btn_insertar_contacto">Insertar contacto</string>
 
     <string-array name="latitud">
         <item>Selecciona la Latitud</item>
@@ -96,7 +144,6 @@
 
     <string name="class_prompt">Selecciona</string>
     <string name="hint_segundos">00</string>
-
 
     <string-array name="longitud">
         <item>Selecciona la Longitud</item>
@@ -116,6 +163,35 @@
         <item>Bares</item>
         <item>Gimnacios</item>
         <item>Estadios</item>
+    </string-array>
+
+    <string-array name="configuracion">
+        <item>Selecciona la configuración</item>
+        <item>ACTION_ACCESSIBILITY_SETTINGS</item>
+        <item>ACTION_AIRPLANE_MODE_SETTINGS</item>
+        <item>ACTION_APN_SETTINGS</item>
+        <item>ACTION_APPLICATION_DEVELOPMENT_SETTINGS</item>
+        <item>ACTION_BLUETOOTH_SETTINGS</item>
+        <item>ACTION_APPLICATION_SETTINGS</item>
+        <item>ACTION_LOCALE_SETTINGS</item>
+        <item>ACTION_INPUT_METHOD_SETTINGS</item>
+        <item>ACTION_DISPLAY_SETTINGS</item>
+        <item>ACTION_SECURITY_SETTINGS</item>
+        <item>ACTION_LOCATION_SOURCE_SETTINGS</item>
+        <item>ACTION_INTERNAL_STORAGE_SETTINGS</item>
+        <item>ACTION_MEMORY_CARD_SETTINGS</item>
+
+        <item>ACTION_DATA_ROAMING_SETTINGS</item>
+        <item>ACTION_DATE_SETTINGS</item>
+        <item>ACTION_DEVICE_INFO_SETTINGS</item>
+        <item>ACTION_INPUT_METHOD_SUBTYPE_SETTINGS</item>
+        <item>ACTION_MANAGE_APPLICATIONS_SETTINGS</item>
+        <item>ACTION_MANAGE_ALL_APPLICATIONS_SETTINGS</item>
+        <item>ACTION_NETWORK_OPERATOR_SETTINGS</item>
+        <item>ACTION_PRIVACY_SETTINGS</item>
+        <item>ACTION_WIFI_SETTINGS</item>
+        <item>ACTION_WIFI_IP_SETTINGS</item>
+        <item>ACTION_USER_DICTIONARY_SETTINGS</item>
     </string-array>
 
 </resources>

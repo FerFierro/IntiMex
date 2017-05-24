@@ -24,7 +24,7 @@
             android:text="@string/label_info_compartir_datos"
             android:textColor="@color/primary_text" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_compartir_datos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -248,5 +248,154 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_weight=".5"
             android:text="@string/label_btn_crear_temporizador" />
+
+        <TextView
+            android:id="@+id/tv_label_info_mostrar_alarmas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_mostrar_alarmas"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/btn_mostrar_alarmas"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_mostrar_alarmas" />
+
+        <TextView
+            android:id="@+id/tv_label_info_agregar_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_agregar_evento"
+            android:textColor="@color/primary_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_fecha_inicio"/>
+
+        <CalendarView
+            android:id="@+id/calendar_begin"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+        </CalendarView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_fecha_termino"/>
+
+        <CalendarView
+            android:id="@+id/calendar_end"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+        </CalendarView>
+
+        <Button
+            android:id="@+id/btn_agregar_evento"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_agregar_evento" />
+
+        <TextView
+            android:id="@+id/tv_info_agregar_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/info_agregar_evento"
+            android:textColor="@color/primary_text" />
+
+        <TextView
+            android:id="@+id/tv_label_info_imagen_detenida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_imagen_detenida"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/btn_imagen_detenida"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_imagen_detenida" />
+
+        <TextView
+            android:id="@+id/tv_label_info_modo_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_modo_video"
+            android:textColor="@color/primary_text" />
+
+        <Button
+            android:id="@+id/btn_modo_video"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_modo_video" />
+
+        <TextView
+            android:id="@+id/tv_label_info_abrir_configuracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_abrir_configuracion"
+            android:textColor="@color/primary_text" />
+
+        <Spinner
+            android:id="@+id/spinner_configuracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            style="@style/SpinnerItemStyle"
+            android:entries="@array/configuracion" />
+
+        <Button
+            android:id="@+id/btn_abrir_configuracion"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_abrir_configuracion" />
+
+        <TextView
+            android:id="@+id/tv_label_info_insertar_contacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/separador"
+            android:text="@string/label_info_insertar_contacto"
+            android:textColor="@color/primary_text" />
+
+
+        <Button
+            android:id="@+id/btn_insertar_contacto"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_weight=".5"
+            android:text="@string/label_btn_insertar_contacto" />
+
+
     </LinearLayout>
 </ScrollView>
